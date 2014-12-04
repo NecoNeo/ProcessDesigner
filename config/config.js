@@ -1,12 +1,87 @@
 define(function () {
     var config = {
-        "demo0" :
+        "gridSize": 10,
+        "nodes":
         {
-            "demo" : 1
-        },
-        "demo1" :
-        {
-            "demo" : 2
+            "_COMMON":
+            {
+                "node":
+                {
+                    "attr":
+                    {
+                        "stroke-width": 2,
+                        "width": 100,
+                        "height": 40,
+                        "cursor": "move",
+                        "r": 5
+                    }
+                },
+                "data":
+                {}
+            },
+            "start":
+            {
+                "tools":
+                {
+                    "image": "images/48/start_event_empty.png",
+                    "nodeType": "start",
+                    "text": "Start Node"
+                },
+                "node":
+                {
+                    "attr":
+                    {
+                        "fill": "#ffffff",
+                        "stroke": "#3e3e3e"
+                    },
+                    "type": "text",
+                    "text":{}
+                },
+                "data":
+                {}
+            },
+            "mission":
+            {
+                "tools":
+                {
+                    "image": "images/48/task_empty.png",
+                    "nodeType": "mission",
+                    "text": "Mission Node"
+                },
+                "node":
+                {
+                    "attr":
+                    {
+                        "fill": "#ffffff",
+                        "stroke": "#3e3e3e"
+                    },
+                    "type": "text",
+                    "text":{}
+                },
+                "data":
+                {}
+            },
+            "end":
+            {
+                "tools":
+                {
+                    "image": "images/48/end_event_terminate.png",
+                    "nodeType": "end",
+                    "text": "End Node"
+                },
+                "node":
+                {
+                    "attr":
+                    {
+                        "fill": "#ffffff",
+                        "stroke": "#3e3e3e"
+                    },
+                    "type": "text",
+                    "text":{}
+                },
+                "data":
+                {}
+            }
         }
     };
     return config;

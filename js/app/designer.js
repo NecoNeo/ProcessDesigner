@@ -1,7 +1,13 @@
-define(['jquery', 'config', 'canvas'],//'json!config/config.json'
-    function ($, Config, Canvas) {
+define(['jquery', 'config', 'canvas', 'tools'],//'json!config/config.json'
+    function ($, Config, Canvas, Tools) {
         "use strict";
-        var version = "1.0 beta";
+        var VERSION = "1.0 beta",
+            CONFIG = Config,
+            CANVAS_WIDTH = 2200,
+            CANVAS_HEIGHT = 1500,
+            DOM_DESIGNER_ID = "designer",
+            DOM_CANVAS_ID = "canvas",
+            DOM_TOOLS_ID = "tools";
 
         var Designer = function () {
             this.init();
@@ -10,20 +16,37 @@ define(['jquery', 'config', 'canvas'],//'json!config/config.json'
         Designer.prototype = {
             constructor: Designer,
             designer: null,
+            $dom: null,
 
             canvas          : null,
-            menu            : null,
-            nodeList        : null,
-            options         : {},
-            properties      : null,
+            menu            : null, //not loaded
+            nodeList        : null, //not loaded
+            options         : {},   //not loaded
+            properties      : null, //not loaded
             tools           : null,
 
             init: function () {
                 Designer.prototype.designer = this;
-                this.options = Config;
-                this.canvas = Canvas();
-                console.log('Designer version: ' + version);
-                console.log(this.options);
+                this.options = CONFIG;
+
+                this._createDom();
+
+                this.tools = Tools(this, DOM_TOOLS_ID);
+                this.canvas = Canvas(this, DOM_CANVAS_ID, CANVAS_WIDTH, CANVAS_HEIGHT);
+
+                console.log('Designer version: ' + VERSION);
+            },
+
+            _createDom: function () {
+                $("body").empty();
+                this.$dom = $("<div></div>").attr("id", DOM_DESIGNER_ID).addClass(DOM_DESIGNER_ID).appendTo($("body"));
+                this.$dom.append($("<div></div>").attr("id", DOM_TOOLS_ID).addClass(DOM_TOOLS_ID));
+                this.$dom.append($("<div></div>").attr("id", DOM_CANVAS_ID).addClass(DOM_CANVAS_ID));
+            },
+
+            _debug: function () {
+                var json = $.extend(true, {}, CONFIG.nodes._COMMON, CONFIG.nodes.start);
+                console.log(json);
             }
         };
 
