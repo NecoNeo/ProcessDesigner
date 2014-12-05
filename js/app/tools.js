@@ -22,7 +22,6 @@ define(['jquery', 'config'], function ($, Config) {
             Tools.prototype.obj = this;
             this.renderTools();
             console.log('Tools Object initialized.');
-            console.log(this.designer);
         },
 
         renderTools: function () {

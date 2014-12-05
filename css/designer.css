@@ -3,8 +3,8 @@
 /* DESIGNER */
 
 .canvas {
-    width: 1200px;
-    height: 800px;
+    width: 1000px;
+    height: 500px;
     border: solid 1px #b0b0b0;
     overflow: scroll;
     display: inline-block;
@@ -13,8 +13,10 @@
 
 .tools {
     border: solid 1px #606060;
+    background-color: #f0f0f0;
     width: 120px;
-    min-height: 500px;
+    /*min-height: 500px;*/
+    height: 500px;
     display: inline-block;
     vertical-align: top;
     font-family: Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";

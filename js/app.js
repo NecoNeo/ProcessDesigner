@@ -25,7 +25,7 @@ requirejs.config({
 
 requirejs(['jquery', 'raphael', 'designer'], function ($, Raphael, Designer) {
     "use strict";
-    console.log('App Starting...');
+    console.log('App Starting...\n\n');
     $.noConflict(true);
     delete window.$;
     delete window.Raphael;

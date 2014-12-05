@@ -3,8 +3,6 @@ define(['jquery', 'config', 'canvas', 'tools'],//'json!config/config.json'
         "use strict";
         var VERSION = "1.0 beta",
             CONFIG = Config,
-            CANVAS_WIDTH = 2200,
-            CANVAS_HEIGHT = 1500,
             DOM_DESIGNER_ID = "designer",
             DOM_CANVAS_ID = "canvas",
             DOM_TOOLS_ID = "tools";
@@ -31,10 +29,10 @@ define(['jquery', 'config', 'canvas', 'tools'],//'json!config/config.json'
 
                 this._createDom();
 
+                this.canvas = Canvas(this, DOM_CANVAS_ID);
                 this.tools = Tools(this, DOM_TOOLS_ID);
-                this.canvas = Canvas(this, DOM_CANVAS_ID, CANVAS_WIDTH, CANVAS_HEIGHT);
 
-                console.log('Designer version: ' + VERSION);
+                console.log("Designer's version: " + VERSION);
             },
 
             _createDom: function () {
