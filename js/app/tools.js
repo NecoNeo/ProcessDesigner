@@ -6,9 +6,9 @@ define(['jquery', 'config'], function ($, Config) {
         configNodes.push(Config["nodes"][toolItem]["tools"]);
     }
 
-    var Tools = function (designer, domId) {
+    var Tools = function (app, domId) {
         this.state = null;
-        this.designer = designer;
+        this.app = app;
         this.$dom = $("#" + domId).bind("selectstart", function () {return false;});
         this.init();
     };
@@ -39,11 +39,11 @@ define(['jquery', 'config'], function ($, Config) {
         dragNodes: function () {}
     };
 
-    var ToolsFactory = function (designer, domId) {
+    var ToolsFactory = function (app, domId) {
         if (Tools.prototype.obj) {
             return Tools.prototype.obj;
         } else {
-            return new Tools(designer, domId);
+            return new Tools(app, domId);
         }
     };
 

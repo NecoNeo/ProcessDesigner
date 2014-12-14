@@ -7,8 +7,8 @@ define(['jquery', 'raphael', 'node', 'line', 'config'], function ($, Raphael, No
         GRID_SIZE = Config.gridSize,
         GRID_STROKE = "#d0d7f0";
 
-    var Canvas = function (designer, domId) {
-        this.designer = designer;
+    var Canvas = function (app, domId) {
+        this.app = app;
         this.$dom = $("#" + domId).bind("selectstart", function () {return false;}).css("background-color", CANVAS_BACKGROUND_COLOR);
         this.init(domId);
     };
@@ -50,12 +50,12 @@ define(['jquery', 'raphael', 'node', 'line', 'config'], function ($, Raphael, No
         }
     };
 
-    var CanvasFactory = function (designer, domId) {
+    var CanvasFactory = function (app, domId) {
         if (Canvas.prototype.obj) {
             console.log('Tools already exists.');
             return Canvas.prototype.obj;
         } else {
-            return new Canvas(designer, domId);
+            return new Canvas(app, domId);
         }
     };
 

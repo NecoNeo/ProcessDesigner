@@ -8,12 +8,17 @@ define(['jquery', 'config', 'canvas', 'tools'],//'json!config/config.json'
             DOM_TOOLS_ID = "tools";
 
         var Designer = function () {
+            this.nodeObjects = [];
+            this.lineObjects = [];
             this.init();
         };
 
         Designer.prototype = {
             constructor: Designer,
             designer: null,
+
+            nodeObjects: null,
+            lineObjects: null,
             $dom: null,
 
             canvas          : null,
@@ -40,6 +45,10 @@ define(['jquery', 'config', 'canvas', 'tools'],//'json!config/config.json'
                 this.$dom = $("<div></div>").attr("id", DOM_DESIGNER_ID).addClass(DOM_DESIGNER_ID).appendTo($("body"));
                 this.$dom.append($("<div></div>").attr("id", DOM_TOOLS_ID).addClass(DOM_TOOLS_ID));
                 this.$dom.append($("<div></div>").attr("id", DOM_CANVAS_ID).addClass(DOM_CANVAS_ID));
+            },
+
+            console: function (commandString) {
+                //console
             },
 
             _debug: function () {
