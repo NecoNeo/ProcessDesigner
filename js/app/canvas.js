@@ -29,6 +29,7 @@ define(['jquery', 'raphael', 'node', 'line', 'config'], function ($, Raphael, No
             this.$dom.click(function () {
                 canvasObj.click();
             });
+            return this.obj;
             console.log('Canvas Object initialized.');
         },
 
