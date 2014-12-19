@@ -1,5 +1,5 @@
-define(['jquery', 'config', 'canvas', 'tools'],//'json!config/config.json'
-    function ($, Config, Canvas, Tools) {
+define(['jquery', 'config', 'canvas', 'tools', 'node'],//'json!config/config.json'
+    function ($, Config, Canvas, Tools, Node) {
         "use strict";
         var VERSION = "1.0 beta",
             CONFIG = Config,
@@ -29,15 +29,20 @@ define(['jquery', 'config', 'canvas', 'tools'],//'json!config/config.json'
             tools           : null,
 
             init: function () {
-                Designer.prototype.designer = this;
+                var designer = Designer.prototype.designer = this;
                 this.options = CONFIG;
 
                 this._createDom();
 
+                //initialization of the parts of the designer
                 this.canvas = Canvas(this, DOM_CANVAS_ID);
                 this.tools = Tools(this, DOM_TOOLS_ID);
 
                 console.log("Designer's version: " + VERSION);
+                //debug
+                window.command = function (params) {
+                    designer.command.apply(designer, arguments);
+                };
             },
 
             _createDom: function () {
@@ -47,8 +52,14 @@ define(['jquery', 'config', 'canvas', 'tools'],//'json!config/config.json'
                 this.$dom.append($("<div></div>").attr("id", DOM_CANVAS_ID).addClass(DOM_CANVAS_ID));
             },
 
-            console: function (commandString) {
-                //console
+            command: function (commandString, object, params) {
+                switch (commandString) {
+                    case "createNode": //demo
+                        var node = new Node();
+                        console.log(node);
+                        console.log(this);
+                    default:
+                }
             },
 
             _debug: function () {

@@ -3,7 +3,7 @@ define(['jquery'], function ($) {
     var Line = function () {};
 
     Line.prototype = {
-        constructor: Line,
+        constructor: Line
     };
 
     return Line;
