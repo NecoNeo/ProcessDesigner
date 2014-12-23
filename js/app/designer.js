@@ -1,5 +1,5 @@
-define(['jquery', 'config', 'canvas', 'tools', 'node'],//'json!config/config.json'
-    function ($, Config, Canvas, Tools, Node) {
+define(['jquery', 'config', 'canvas', 'tools', 'node', 'line'],//'json!config/config.json'
+    function ($, Config, Canvas, Tools, Node, Line) {
         "use strict";
         var VERSION = "1.0 beta",
             CONFIG = Config,
@@ -10,6 +10,7 @@ define(['jquery', 'config', 'canvas', 'tools', 'node'],//'json!config/config.jso
         var Designer = function () {
             this.nodeObjects = [];
             this.lineObjects = [];
+            this.currentObject = null;
             this.init();
         };
 
@@ -41,7 +42,7 @@ define(['jquery', 'config', 'canvas', 'tools', 'node'],//'json!config/config.jso
                 console.log("Designer's version: " + VERSION);
                 //debug
                 window.command = function (params) {
-                    designer.command.apply(designer, arguments);
+                    return designer.command.apply(designer, arguments);
                 };
             },
 
@@ -52,13 +53,15 @@ define(['jquery', 'config', 'canvas', 'tools', 'node'],//'json!config/config.jso
                 this.$dom.append($("<div></div>").attr("id", DOM_CANVAS_ID).addClass(DOM_CANVAS_ID));
             },
 
-            command: function (commandString, object, params) {
+            command: function (commandString, params) {
                 switch (commandString) {
                     case "createNode": //demo
-                        var node = new Node();
-                        console.log(node);
-                        console.log(this);
+                        var node = new Node(this, params);
+                        return node;
+                        break;
                     default:
+                        console.log('Undefined command.');
+                        break;
                 }
             },
 

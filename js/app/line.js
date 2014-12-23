@@ -1,9 +1,15 @@
 define(['jquery'], function ($) {
     "use strict";
-    var Line = function () {};
+
+    var Line = function (app, params) {
+        this.app = app;
+        this.init(params);
+    };
 
     Line.prototype = {
-        constructor: Line
+        constructor: Line,
+        
+        init: function () {}
     };
 
     return Line;

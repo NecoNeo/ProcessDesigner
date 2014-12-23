@@ -31,3 +31,5 @@ requirejs(['jquery', 'raphael', 'designer'], function ($, Raphael, Designer) {
     delete window.Raphael;
     Designer();
 });
+
+//Viewer();

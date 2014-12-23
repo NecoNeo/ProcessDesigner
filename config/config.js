@@ -38,7 +38,12 @@ define(function () {
                     "text":{}
                 },
                 "data":
-                {}
+                {
+                    "nodeName":
+                    {
+                        "value": "Start Node(demo)"
+                    }
+                }
             },
             "mission":
             {
@@ -59,7 +64,12 @@ define(function () {
                     "text":{}
                 },
                 "data":
-                {}
+                {
+                    "nodeName":
+                    {
+                        "value": "Mission Node(demo)"
+                    }
+                }
             },
             "end":
             {
