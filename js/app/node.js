@@ -26,8 +26,9 @@ define(['jquery', 'line', 'config'], function ($, Line, Config) {
 
             this.group = paper.group();
             this.rect = paper.rect().attr(this._attribute.attr).attr({"x": x}).attr({"y": y});
-            this.text = paper.text(x, y + 25, this._data.nodeName.value)
-                        .attr(this._attribute.text);
+            this.text = paper.text(x + this._attribute.attr.width / 2, y + this._attribute.attr.height / 2, this._data.nodeName.value)
+                        .attr(this._attribute.text)
+                        .attr({"text-anchor": "middle"});
 
             this.group.add(this.rect);
             this.group.add(this.text);
