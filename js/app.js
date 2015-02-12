@@ -2,6 +2,7 @@ requirejs.config({
     baseUrl: "./",
     paths: {
         'jquery'        : 'js/lib/jquery-1.11.1.min',
+        'snap'          : 'js/lib/snap.svg',
         'raphael'       : 'js/lib/raphael-min',
         'text'          : 'js/lib/text',
         'json'          : 'js/lib/json',
