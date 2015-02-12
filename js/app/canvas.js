@@ -1,4 +1,4 @@
-define(['jquery', 'raphael', 'node', 'line', 'config'], function ($, Raphael, Node, Line, Config) {
+define(['jquery', 'snap', 'config'], function ($, Snap, Config) {
     "use strict";
 
     var CANVAS_WIDTH = 2200,
@@ -22,9 +22,11 @@ define(['jquery', 'raphael', 'node', 'line', 'config'], function ($, Raphael, No
 
         init: function (domId) {
             var canvasObj = this;
+            var svg = $("#" + domId).find("svg")[0];
             if (Canvas.prototype.obj) return null;
             Canvas.prototype.obj = this;
-            this.paper = Raphael(domId, CANVAS_WIDTH, CANVAS_HEIGHT);
+            $(svg).attr("width", CANVAS_WIDTH).attr("height", CANVAS_HEIGHT);
+            this.paper = Snap(svg);
             this.createGrid();
             this.$dom.click(function () {
                 canvasObj.click();
@@ -34,15 +36,16 @@ define(['jquery', 'raphael', 'node', 'line', 'config'], function ($, Raphael, No
         },
 
         createGrid: function () {
-            this.gridSet = this.paper.set();
-            for (var x = GRID_SIZE; x < CANVAS_WIDTH; x += GRID_SIZE) {
-                var L = "M" + x + " 0L" + x + " " + CANVAS_HEIGHT;
-                this.gridSet.push(this.paper.path(L).attr("stroke", GRID_STROKE));
-            }
-            for (var y = GRID_SIZE; y < CANVAS_HEIGHT; y += GRID_SIZE) {
-                var L = "M0 " + y + "L" + CANVAS_WIDTH + " " + y;
-                this.gridSet.push(this.paper.path(L).attr("stroke", GRID_STROKE));
-            }
+            var p = this.paper.path("M0 10L0 0L10 0").attr({
+                    fill: "none",
+                    stroke: "#e0e0e0",
+                    strokeWidth: 1
+                });
+            p = p.pattern(0, 0, 10, 10);
+            this.grid = this.paper.rect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+            this.grid.attr({
+                fill: p
+            });
             console.log('Grid created.');
         },
 

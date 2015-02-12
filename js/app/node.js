@@ -24,13 +24,13 @@ define(['jquery', 'line', 'config'], function ($, Line, Config) {
             
             console.log(this._attribute);
 
-            this.group = paper.set();
-            this.rect = paper.rect().attr(this._attribute.attr).attr("x", x).attr("y", y);
-            this.text = paper.text(x + this._attribute.attr.width / 2, y + this._attribute.attr.height / 2, this._data.nodeName.value)
+            this.group = paper.group();
+            this.rect = paper.rect().attr(this._attribute.attr).attr({"x": x}).attr({"y": y});
+            this.text = paper.text(x, y + 25, this._data.nodeName.value)
                         .attr(this._attribute.text);
 
-            this.group.push(this.rect);
-            this.group.push(this.text);
+            this.group.add(this.rect);
+            this.group.add(this.text);
         },
 
         move: function () {},

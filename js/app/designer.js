@@ -47,10 +47,10 @@ define(['jquery', 'config', 'canvas', 'tools', 'node', 'line'],//'json!config/co
             },
 
             _createDom: function () {
+                var domString;
                 $("body").empty();
-                this.$dom = $("<div></div>").attr("id", DOM_DESIGNER_ID).addClass(DOM_DESIGNER_ID).appendTo($("body"));
-                this.$dom.append($("<div></div>").attr("id", DOM_TOOLS_ID).addClass(DOM_TOOLS_ID));
-                this.$dom.append($("<div></div>").attr("id", DOM_CANVAS_ID).addClass(DOM_CANVAS_ID));
+                domString = "<div id='" + DOM_DESIGNER_ID + "' class='" + DOM_DESIGNER_ID + "'><div id='" + DOM_TOOLS_ID + "' class='" + DOM_TOOLS_ID + "'></div><div id='" + DOM_CANVAS_ID + "' class='" + DOM_CANVAS_ID + "'><svg></svg></div></div>";
+                this.$dom = $(domString).appendTo($("body"));
             },
 
             command: function (commandString, params) {
