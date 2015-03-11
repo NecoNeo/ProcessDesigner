@@ -24,12 +24,11 @@ requirejs.config({
     optimizeAllPluginResources: true
 });
 
-requirejs(['jquery', 'snap', 'raphael', 'designer'], function ($, Snap, Raphael, Designer) {
+requirejs(['jquery', 'snap', 'designer'], function ($, Snap, Designer) {
     "use strict";
     console.log('App Starting...\n\n');
     //$.noConflict(true);
     //delete window.$;
-    //delete window.Raphael;
     Designer();
 });
 
